@@ -15,8 +15,8 @@ public final class R {
     }
     public static final class id {
         public static final int date=0x7f070001;
+        public static final int listView1=0x7f070000;
         public static final int menu_settings=0x7f070002;
-        public static final int mylist=0x7f070000;
     }
     public static final class layout {
         public static final int activity_timeline=0x7f030000;
