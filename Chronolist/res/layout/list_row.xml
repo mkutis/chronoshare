@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dp">
+    android:layout_height="wrap_content">
     
+   
+   <!--  Prints the date -->
+    <TextView android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"/>
+    
+    <!--  Prints message header -->
+    <TextView 
+        android:text="@string/messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" 
+        android:layout_below="@+id/date"
+        android:layout_marginLeft="24dp"
+        />
+    
+    
+    <!--  Prints the name of the first sender -->
+    <TextView
+        android:id="@+id/sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" 
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="48dp"/>
+    
+    <!--  Prints the body of the first message retrieved -->
+    <TextView
+        android:id="@+id/body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_below="@+id/sender" 
+        android:layout_marginLeft="60dp"
+        /> 
         
-     <TextView android:id="@+id/date"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+    <!--  Prints the sender of the second message -->
+     <TextView
+        android:id="@+id/sender2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" 
+        android:layout_below="@+id/body"
+        android:layout_marginLeft="48dp"/>
+     
+     <!--  Prints the body of the second message -->
+     <TextView
+        android:id="@+id/body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_below="@+id/sender2" 
+        android:layout_marginLeft="60dp"
+        /> 
+       
+     <!--  Button for additional messages -->
+     <Button 
+         android:text="@string/read"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/body2"
+         android:layout_marginTop="16dp"
+         android:layout_alignParentRight="true"
+         />
+     
+     <!-- Displays picture title  -->
+      <TextView 
+        android:text="@string/pictures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" 
+        android:layout_below="@+id/body2"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="24dp"
+        />
+      
+      <!-- Displays 1st picture  -->
+     
+     <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/body2"
+        android:layout_marginTop="96dp" 
+        android:layout_marginLeft="48dp"
+        />
+     
+     <!--  Button for additional pictures -->
+     <Button 
+         android:text="@string/view"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/imageView1"
+         android:layout_marginTop="16dp"
+         android:layout_alignParentRight="true"
+         />
+     
+     <TextView
+         android:text="@string/appointments"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="18sp"
+         android:layout_below="@+id/imageView1"
+         android:layout_marginTop="60dp"
+         android:layout_marginLeft="24dp"
+         />
+     
+     
+    
+ 
+     
         
-</LinearLayout>
+</RelativeLayout>
