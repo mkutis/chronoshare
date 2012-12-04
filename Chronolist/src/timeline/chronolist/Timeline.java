@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Vector;
 
-import fetchers.chronolist.Calendarfaux;
 import fetchers.chronolist.ImageFetcher;
 import fetchers.chronolist.TextFetcher;
 import parser.chronolist.Day;
@@ -15,17 +14,17 @@ import parser.chronolist.Message;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.Menu;
 import android.widget.ListView;
 
 public class Timeline extends Activity {
 	
 	private ListView listView1;
-	public static long oneday = 86400000;
+	public static long oneday = 86400000; //the number of milliseconds in a day
 	Calendar c = Calendar.getInstance();
 	
 	//public TextFetcher example = new TextFetcher(this);
+	//
 	
 
 	@Override
@@ -52,6 +51,10 @@ public class Timeline extends Activity {
 		for(int i = 0; i < messlist.length; i++){
 			messlist[i] = new Message(texts.senders[i], texts.body[i], texts.time[i]);
 		}
+		
+		
+		ImageFetcher images = new ImageFetcher(this);
+		
 		int messpos = 0;
 		
 		///////////////////////////////////////////////
@@ -60,19 +63,17 @@ public class Timeline extends Activity {
 			
 			long mildate = getStart() - oneday*i;
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy"); 
-			
-			
-			ImageFetcher images = new ImageFetcher(this);
 			String[] temp_photos = new String[images.photos.length];
 			
-			for(int j = 0; j < images.photos.length; j++){
-				
-			}
+			
+			
+			//this is the millisecond representation of the date at MIDNIGHT.
+			//there are 
+			String dateString = formatter.format(new Date(mildate)); 
 			
 			
 			
 			
-			String dateString = formatter.format(new Date(mildate));
 			Vector<Message> tmp = populateMessages(this, mildate, messpos, messlist);
 			messpos += tmp.size();
 			Message[] messport = new Message[]{new Message(), new Message()};
