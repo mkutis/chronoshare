@@ -1,13 +1,16 @@
 package timeline.chronolist;
 
-//import fetchers.chronolist.TextFetcher;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Vector;
 
+import fetchers.chronolist.CalendarFetcher;
+import fetchers.chronolist.CallFetcher;
 import fetchers.chronolist.ImageFetcher;
 import fetchers.chronolist.TextFetcher;
+
 import parser.chronolist.Day;
 import parser.chronolist.DayAdapter;
 import parser.chronolist.Message;
@@ -15,6 +18,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class Timeline extends Activity {
@@ -23,20 +28,18 @@ public class Timeline extends Activity {
 	public static long oneday = 86400000; //the number of milliseconds in a day
 	Calendar c = Calendar.getInstance();
 	
-	//public TextFetcher example = new TextFetcher(this);
-	//
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_timeline);
+		setContentView(R.layout.list_row);
 		
 		//////////////////////////////////
 		
 		//number of pannels to generate; hard programmed number will be replaced by
 		//computed number when date picker is up and running
-		Day[] daylist = new Day[30]; 
+		Day[] daylist = new Day[15]; 
 	
 					
 		/////////////////////////////////////
@@ -53,65 +56,46 @@ public class Timeline extends Activity {
 		}
 		
 		
-		ImageFetcher images = new ImageFetcher(this);
 		
 		int messpos = 0;
 		
 		///////////////////////////////////////////////
 		
-		for(int i = 0; i < 30; i++){
+		for(int i = 0; i < 15; i++){
+			
+			
 			
 			long mildate = getStart() - oneday*i;
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy"); 
-			String[] temp_photos = new String[images.photos.length];
-			
-			
-			
-			//this is the millisecond representation of the date at MIDNIGHT.
-			//there are 
 			String dateString = formatter.format(new Date(mildate)); 
-			
-			
-			
-			
+
+		    ImageFetcher images = new ImageFetcher(this, mildate);
+		  
 			Vector<Message> tmp = populateMessages(this, mildate, messpos, messlist);
 			messpos += tmp.size();
-			Message[] messport = new Message[]{new Message(), new Message()};
-			//System.out.println(dateString + " has " + (tmp.size()));
-			
-			if(tmp.size() > 1){
-				messport = new Message[tmp.size()];
-				tmp.copyInto(messport);
-			}
-			if(tmp.size() == 1){
-				messport = new Message[2];
-				messport[0] = tmp.elementAt(0);
-				messport[1] = new Message();
-			}
+			Message[] messport = new Message[tmp.size()];
+			tmp.copyInto(messport);
 			tmp.clear();
 			
-			daylist[i] = new Day(dateString, messport, images.photos);
+			CalendarFetcher appointments = new CalendarFetcher(this, mildate);
 			
-			//Calendarfaux appointments = new Calendarfaux(this, mildate);
-			//System.out.println(appointments.appointment);
-			//System.out.println(dateString);
-			
-			///////////////////////////////////////////////////
+			CallFetcher calls = new CallFetcher(this, mildate);
+
 			
 
 			
 			
+			daylist[i] = new Day(dateString, messport, images.photos, appointments.appointment, calls.calls);
+	
+			
+			
+			
+			
+			///////////////////////////////////////////////////
+			
 		}
 		
-	
-	   
-		
-		
-		
-	
-		
-		
-	
+		setContentView(R.layout.activity_timeline);
 		
 		DayAdapter adapter = new DayAdapter(this, R.layout.list_row, daylist);
 		

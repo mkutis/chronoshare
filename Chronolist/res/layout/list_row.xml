@@ -5,13 +5,15 @@
     
    
    <!--  Prints the date -->
-    <TextView android:id="@+id/date"
+    <TextView 
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="22sp"/>
     
     <!--  Prints message header -->
     <TextView 
+        android:id="@+id/messagehead"
         android:text="@string/messages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,8 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp" 
-        android:layout_marginTop="52dp"
-        android:layout_marginLeft="48dp"/>
+        android:layout_below="@+id/messagehead"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"/>
+    
     
     <!--  Prints the body of the first message retrieved -->
     <TextView
@@ -38,6 +43,7 @@
         android:textSize="14sp"
         android:layout_below="@+id/sender" 
         android:layout_marginLeft="60dp"
+        android:layout_marginRight="10dp"
         /> 
         
     <!--  Prints the sender of the second message -->
@@ -57,26 +63,29 @@
         android:textSize="14sp"
         android:layout_below="@+id/sender2" 
         android:layout_marginLeft="60dp"
+        android:layout_marginRight="10dp"
         /> 
        
      <!--  Button for additional messages -->
      <Button 
          android:text="@string/read"
+         android:id="@+id/messagebutton"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_below="@+id/body2"
          android:layout_marginTop="16dp"
          android:layout_alignParentRight="true"
+         android:visibility="gone"
          />
      
      <!-- Displays picture title  -->
       <TextView 
         android:text="@string/pictures"
+        android:id="@+id/pichead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp" 
-        android:layout_below="@+id/body2"
-        android:layout_marginTop="60dp"
+        android:layout_below="@+id/messagebutton"
         android:layout_marginLeft="24dp"
         />
       
@@ -86,32 +95,79 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/body2"
-        android:layout_marginTop="96dp" 
+        android:layout_below="@+id/pichead" 
         android:layout_marginLeft="48dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerInside"
+        
         />
      
      <!--  Button for additional pictures -->
+    
      <Button 
+         android:id="@+id/picbutton"
          android:text="@string/view"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_below="@+id/imageView1"
          android:layout_marginTop="16dp"
          android:layout_alignParentRight="true"
+         android:visibility="gone"
          />
+    
+     <!-- Appointments Headers -->
      
      <TextView
          android:text="@string/appointments"
+         android:id="@+id/appointhead"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="18sp"
-         android:layout_below="@+id/imageView1"
-         android:layout_marginTop="60dp"
+         android:layout_below="@+id/picbutton"
          android:layout_marginLeft="24dp"
          />
      
+     <TextView 
+         android:id="@+id/appointment"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="14sp"
+         android:layout_marginLeft="60dp"
+         android:layout_marginRight="10dp"
+         android:layout_below="@+id/appointhead"
+         />
      
+     <Button 
+         android:id="@+id/appointbutton"
+         android:text="@string/read"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/appointment"
+         android:layout_marginTop="16dp"
+         android:layout_alignParentRight="true"
+         android:visibility="gone"/>
+       
+       
+     <TextView
+         android:id="@+id/callhead"
+         android:text="@string/calls"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="18sp"
+         android:layout_below="@+id/appointbutton"
+         android:layout_marginLeft="24dp"
+         />
+  
+     <TextView 
+      android:id="@+id/call"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14sp"
+      android:layout_marginLeft="60dp"
+      android:layout_marginRight="10dp"
+      android:layout_below="@+id/callhead"
+      />
+  
     
  
      

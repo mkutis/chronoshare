@@ -8,5 +8,7 @@
     <string name = "pictures">Pictures</string>
     <string name = "appointments">Appointments</string>
     <string name = "view">View more</string>
+    <string name = "calls">Calls</string>
+     
 
 </resources>

@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 public class DayAdapter extends ArrayAdapter<Day> {
 	
+
+	
 	Context context;
 	int layoutResourceId;
 	Day daylist[] = null;
@@ -41,6 +43,10 @@ public class DayAdapter extends ArrayAdapter<Day> {
 	           holder.sender2 = (TextView)row.findViewById(R.id.sender2);
 	           holder.body2 = (TextView)row.findViewById(R.id.body2);
 	           holder.photo = (ImageView)row.findViewById(R.id.imageView1);
+	           holder.appoint = (TextView)row.findViewById(R.id.appointment);
+	           holder.call = (TextView)row.findViewById(R.id.call);
+	           
+	           
 	           
 	           row.setTag(holder);
 		}
@@ -51,20 +57,57 @@ public class DayAdapter extends ArrayAdapter<Day> {
 		Day day = daylist[position];
 		holder.date.setText(day.date);
 		
+		
+	
+		holder.sender.setVisibility(View.VISIBLE);
+		holder.body.setVisibility(View.VISIBLE);
+		holder.sender2.setVisibility(View.VISIBLE);
+		holder.body2.setVisibility(View.VISIBLE);
+		//holder.appoint.setVisibility(View.GONE);
+		holder.call.setVisibility(View.GONE);
+		
+		
+		
+		
 		if(day.messages.length > 1){
 			holder.sender.setText(day.messages[0].sender);
 			holder.body.setText(day.messages[0].body);
 			holder.sender2.setText(day.messages[1].sender);
 			holder.body2.setText(day.messages[1].body);
 		}
+		if(day.messages.length == 1){
+			holder.sender.setText(day.messages[0].sender);
+			holder.body.setText(day.messages[0].body);
+			holder.sender2.setVisibility(View.GONE);
+			holder.body2.setVisibility(View.GONE);
+		}
+		if(day.messages.length == 0){
+			holder.sender.setVisibility(View.GONE);
+			holder.body.setVisibility(View.GONE);
+			holder.sender2.setVisibility(View.GONE);
+			holder.body2.setVisibility(View.GONE);
+		}
+	
 		
 		
-		
-		if(day.photos.length > 0){
+		if(day.photos != null){
 			Bitmap bm = BitmapFactory.decodeFile(day.photos[0]);
-			holder.photo.setImageBitmap(bm);
+			holder.photo.setImageBitmap(Bitmap.createScaledBitmap(bm, 144, 144, false));
+			holder.photo.setVisibility(View.VISIBLE);
+		}
+		else{
+			holder.photo.setVisibility(View.GONE);
 		}
 		
+		if(holder.appoint != null){
+			holder.appoint.setText(day.appointment);
+			holder.appoint.setVisibility(View.VISIBLE);
+		}
+		
+		if(day.calls != null){
+			holder.call.setText(day.calls[0]);
+			holder.call.setVisibility(View.VISIBLE);
+		}
 		
 		return row;
 		
@@ -77,6 +120,8 @@ public class DayAdapter extends ArrayAdapter<Day> {
 		TextView sender2;
 		TextView body2;
 		ImageView photo;
+		TextView appoint;
+		TextView call;
 	}
 
 }
