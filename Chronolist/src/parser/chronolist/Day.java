@@ -1,5 +1,7 @@
 package parser.chronolist;
 
+
+//holds all the content for a certain day, like October 23, 2012. 
 public class Day {
 	
 	public String date, appointment;

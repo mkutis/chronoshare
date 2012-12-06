@@ -32,16 +32,7 @@ public class CallFetcher {
 			
 	        for(int i=0 ; i < c.getCount();  i++){
 	        	long recieved = c.getLong(c.getColumnIndex(android.provider.CallLog.Calls.DATE));
-	        	
-	        	
-        		//System.out.println("needs to be between " + daystart + " and " + nextday);
-        		
-        		if(recieved > recent){
-        			recent = recieved;
-        			//System.out.println(recieved);
-        		}
-	       
-	        	
+	        
 	        	if(recieved > daystart && recieved < nextday){
 	        		StringBuilder displayText = new StringBuilder();
 	        		String name = c.getString(c.getColumnIndex(android.provider.CallLog.Calls.NUMBER)).toString();
@@ -53,9 +44,8 @@ public class CallFetcher {
 	        	c.moveToNext();	
 	        }
 	        c.close();
-	        //System.out.println("***" + daystart);
 		}
-		if(calls[0].contains("to be replaced")){
+		if(calls[0].contains("to be replaced")){ //if nothing is ever added to the array
 			calls = null;
 		}
 		return calls;

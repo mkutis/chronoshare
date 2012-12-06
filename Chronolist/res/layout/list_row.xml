@@ -127,6 +127,8 @@
          android:layout_marginLeft="24dp"
          />
      
+     <!--  Appointment -->
+     
      <TextView 
          android:id="@+id/appointment"
          android:layout_width="wrap_content"
@@ -136,6 +138,8 @@
          android:layout_marginRight="10dp"
          android:layout_below="@+id/appointhead"
          />
+     
+     <!--  Appointment Read More Button -->
      
      <Button 
          android:id="@+id/appointbutton"
@@ -148,6 +152,7 @@
          android:visibility="gone"/>
        
        
+     <!-- Call Head -->
      <TextView
          android:id="@+id/callhead"
          android:text="@string/calls"
@@ -158,6 +163,8 @@
          android:layout_marginLeft="24dp"
          />
   
+     <!--  Call -->
+     
      <TextView 
       android:id="@+id/call"
       android:layout_width="wrap_content"

@@ -14,8 +14,6 @@ public class TextFetcher {
 		senders = getSenders(context);
 		body = getBody(context);
 		time = getTime(context);
-		//senders[0] = "Peter";
-		//getSenders(context);
 	}
 	
 	public String[] getSenders(Context context){
@@ -28,7 +26,6 @@ public class TextFetcher {
 		        for(int i=0;i<1000;i++){
 		   
 		                number[i]=c.getString(c.getColumnIndexOrThrow("address")).toString();
-		               // System.out.println(number[i]);
 		                c.moveToNext();
 		                
 		        }
@@ -47,8 +44,6 @@ public class TextFetcher {
 		if(c.moveToFirst()){
 		        for(int i=0;i<1000;i++){
 		        	
-	
-		        	
 		                body[i]=c.getString(c.getColumnIndexOrThrow("body")).toString();
 		                c.moveToNext();
 		        }
@@ -66,9 +61,7 @@ public class TextFetcher {
 		                
 		if(c.moveToFirst()){
 		        for(int i=0;i<1000;i++){
-		        	
-	
-		        	
+		        
 		                time[i]=c.getString(c.getColumnIndexOrThrow("date")).toString();
 		                c.moveToNext();
 		        }

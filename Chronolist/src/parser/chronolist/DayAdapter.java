@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+//adapts the information from a list of days into panels
 public class DayAdapter extends ArrayAdapter<Day> {
 	
 

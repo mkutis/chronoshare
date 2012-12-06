@@ -12,18 +12,14 @@ import android.text.format.DateUtils;
 
 public class CalendarFetcher{
 	
-	public long lDate;
-	public String appointment;
+	public long lDate; //midnight in miilliseconds
+	public String appointment; //string of appointment
 	
 	public CalendarFetcher(Context context, long lDate){
 		appointment = fetch(context, lDate);
 	}
 	
 	public String fetch(Context context, long lDate){
-		
-	    	//convert the input date into a string of millisecond
-	    	//Long lDate = takenDate.getTime();
-	    	String sDate = String.valueOf(lDate);
 	    	
 	    	// Fetch a list of all calendars synced with the device, their display names and whether the
 			// user has them selected for display.
@@ -35,8 +31,7 @@ public class CalendarFetcher{
 	        while (cursor.moveToNext()) {                       
 	            final String _id = cursor.getString(0);
 	            final String displayName = cursor.getString(1);
-	            final Boolean selected = !cursor.getString(2).equals("0");                      
-	            //System.out.println("Id: " + _id + " Display Name: " + displayName + " Selected: " + selected);
+	            final Boolean selected = !cursor.getString(2).equals("0");                     
 	            calendarIds.add(_id);
 	        }
 	    	

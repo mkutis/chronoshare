@@ -1,5 +1,7 @@
 package parser.chronolist;
 
+//a simple class for messages to hold all the information associated with an SMS
+
 public class Message {
 	
 	public String sender, body, time;

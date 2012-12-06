@@ -14,7 +14,6 @@ public class ImageFetcher {
 	
 	public ImageFetcher(Context context, long time){
 		photos = getPhotos(context, time);
-		//photos = new String[]{"234"};
 	}
 	
 	public String[] getPhotos(Context context, long time){
@@ -26,20 +25,16 @@ public class ImageFetcher {
 		}
 		
 		Cursor c= context.getContentResolver().query(images, null, null, null, null);	
-		//System.out.println("****" + time + "****");
-		//System.out.println(DateUtils.DAY_IN_MILLIS);
 		long nextday = time + DateUtils.DAY_IN_MILLIS;
-		//System.out.println(nextday);
-		
+	
 		String[] photos = new String[c.getCount()];
 		photos[0] = "to be replaced";
 		  
 		if(c.moveToFirst()){
 	        for(int i=0 ; i < c.getCount();  i++){
 	        
-	        	long taken = c.getLong(c.getColumnIndex(MediaColumns.DATE_ADDED))*1000;
-	        	//System.out.println(taken);
-	        	
+	        	long taken = c.getLong(c.getColumnIndex(MediaColumns.DATE_ADDED))*1000; 
+	        	//database only records the taken date in seconds; need to change to milliseconds, so we multi by 1000
 	        	
 	        	if(taken > time && taken < nextday){
 	        		//needs to be changed so that stuff keeps getting added to the list
@@ -52,7 +47,7 @@ public class ImageFetcher {
 	        c.close();
 		}
 		
-		if(photos[0].contains("to be replaced")){
+		if(photos[0].contains("to be replaced")){ //if the fetcher doesn't find any photos for the particular day
 			photos = null; 
 		}
 		
