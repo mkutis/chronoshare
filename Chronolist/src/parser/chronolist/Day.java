@@ -19,7 +19,8 @@ public class Day {
 		calls[0] = "no one loves you";
 	}
 	
-	public Day(String date, Message[] messages, String[] photos, String appointment, String[] calls){
+	public Day(String date, Message[] messages, String[] photos, String appointment, 
+			String[] calls){
 		super();
 		this.date = date;
 		this.messages = messages;

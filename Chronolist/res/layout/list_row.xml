@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient"
+    android:focusableInTouchMode="false">
     
-   
+    
+
    <!--  Prints the date -->
     <TextView 
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"/>
+        android:textSize="28sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:typeface="serif"/>
+    
+
+ 
     
     <!--  Prints message header -->
     <TextView 
@@ -31,7 +40,7 @@
         android:textSize="18sp" 
         android:layout_below="@+id/messagehead"
         android:layout_marginLeft="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:visibility="visible"/>
     
     
@@ -65,18 +74,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="10dp"
         /> 
-       
-     <!--  Button for additional messages -->
-     <Button 
-         android:text="@string/read"
-         android:id="@+id/messagebutton"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/body2"
-         android:layout_marginTop="16dp"
-         android:layout_alignParentRight="true"
-         android:visibility="gone"
-         />
+      
      
      <!-- Displays picture title  -->
       <TextView 
@@ -85,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp" 
-        android:layout_below="@+id/messagebutton"
+        android:layout_below="@+id/body2"
         android:layout_marginLeft="24dp"
         />
       
@@ -101,19 +99,7 @@
         android:scaleType="centerInside"
         
         />
-     
-     <!--  Button for additional pictures -->
-    
-     <Button 
-         android:id="@+id/picbutton"
-         android:text="@string/view"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/imageView1"
-         android:layout_marginTop="16dp"
-         android:layout_alignParentRight="true"
-         android:visibility="gone"
-         />
+  
     
      <!-- Appointments Headers -->
      
@@ -123,7 +109,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="18sp"
-         android:layout_below="@+id/picbutton"
+         android:layout_below="@+id/imageView1"
          android:layout_marginLeft="24dp"
          />
      
@@ -135,21 +121,10 @@
          android:layout_height="wrap_content"
          android:textSize="14sp"
          android:layout_marginLeft="60dp"
-         android:layout_marginRight="10dp"
          android:layout_below="@+id/appointhead"
+         android:visibility="gone"
          />
      
-     <!--  Appointment Read More Button -->
-     
-     <Button 
-         android:id="@+id/appointbutton"
-         android:text="@string/read"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/appointment"
-         android:layout_marginTop="16dp"
-         android:layout_alignParentRight="true"
-         android:visibility="gone"/>
        
        
      <!-- Call Head -->
@@ -159,7 +134,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="18sp"
-         android:layout_below="@+id/appointbutton"
+         android:layout_below="@+id/appointment"
          android:layout_marginLeft="24dp"
          />
   
@@ -174,9 +149,19 @@
       android:layout_marginRight="10dp"
       android:layout_below="@+id/callhead"
       />
+     
+     <TextView 
+      android:id = "@+id/emailheader"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14sp"
+      android:layout_marginLeft="60dp"
+      android:layout_marginRight="10dp"
+      android:layout_below="@+id/call"
+      android:visibility="invisible"
+      />
   
-    
- 
+   
      
         
 </RelativeLayout>

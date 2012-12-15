@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class DayAdapter extends ArrayAdapter<Day> {
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row = convertView;
 		DayHolder holder = null;
+		
 		
 		if(row == null){
 		       LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -65,19 +67,23 @@ public class DayAdapter extends ArrayAdapter<Day> {
 		holder.body.setVisibility(View.VISIBLE);
 		holder.sender2.setVisibility(View.VISIBLE);
 		holder.body2.setVisibility(View.VISIBLE);
-		//holder.appoint.setVisibility(View.GONE);
+		holder.appoint.setVisibility(View.GONE);
 		holder.call.setVisibility(View.GONE);
-		
-		
+		row.findViewById(R.id.messagehead).setVisibility(View.GONE);
+		row.findViewById(R.id.pichead).setVisibility(View.GONE);
+		row.findViewById(R.id.appointhead).setVisibility(View.GONE);
+		row.findViewById(R.id.callhead).setVisibility(View.GONE);
 		
 		
 		if(day.messages.length > 1){
+			row.findViewById(R.id.messagehead).setVisibility(View.VISIBLE);
 			holder.sender.setText(day.messages[0].sender);
 			holder.body.setText(day.messages[0].body);
 			holder.sender2.setText(day.messages[1].sender);
 			holder.body2.setText(day.messages[1].body);
 		}
 		if(day.messages.length == 1){
+			row.findViewById(R.id.messagehead).setVisibility(View.VISIBLE);
 			holder.sender.setText(day.messages[0].sender);
 			holder.body.setText(day.messages[0].body);
 			holder.sender2.setVisibility(View.GONE);
@@ -93,6 +99,7 @@ public class DayAdapter extends ArrayAdapter<Day> {
 		
 		
 		if(day.photos != null){
+			row.findViewById(R.id.pichead).setVisibility(View.VISIBLE);
 			Bitmap bm = BitmapFactory.decodeFile(day.photos[0]);
 			holder.photo.setImageBitmap(Bitmap.createScaledBitmap(bm, 144, 144, false));
 			holder.photo.setVisibility(View.VISIBLE);
@@ -101,12 +108,18 @@ public class DayAdapter extends ArrayAdapter<Day> {
 			holder.photo.setVisibility(View.GONE);
 		}
 		
-		if(holder.appoint != null){
+		if(day.appointment.contentEquals("") == false){
+			row.findViewById(R.id.appointhead).setVisibility(View.VISIBLE);
+			System.out.println(day.appointment);
 			holder.appoint.setText(day.appointment);
 			holder.appoint.setVisibility(View.VISIBLE);
 		}
+		else{
+			holder.appoint.setVisibility(View.GONE);
+		}
 		
 		if(day.calls != null){
+			row.findViewById(R.id.callhead).setVisibility(View.VISIBLE);
 			holder.call.setText(day.calls[0]);
 			holder.call.setVisibility(View.VISIBLE);
 		}

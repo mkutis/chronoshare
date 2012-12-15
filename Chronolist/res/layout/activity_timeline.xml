@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" 
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"> 
+    android:layout_height="fill_parent"
+    android:background="@drawable/blue_gradient">
     
+    
+            
      <ListView
         android:id="@+id/listView1"
+        android:divider="@drawable/blue_gradient"
+        android:dividerHeight="8dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        />
+       
      
-</LinearLayout>
+</RelativeLayout>
